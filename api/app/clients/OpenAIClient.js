@@ -813,7 +813,7 @@ ${convo}
       }
     };
 
-    if (this.options.titleMethod === 'completion') {
+    if (!this.options.titleModel || this.options.titleMethod === 'completion') {
       await titleChatCompletion();
       logger.debug('[OpenAIClient] Convo Title: ' + title);
       return title;
