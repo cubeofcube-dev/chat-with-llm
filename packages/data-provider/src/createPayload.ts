@@ -3,7 +3,7 @@ import { EndpointURLs } from './config';
 import * as s from './schemas';
 
 export default function createPayload(submission: t.TSubmission) {
-  const { conversation, userMessage, endpointOption, isEdited, isContinued, isTemporary } =
+  const { conversation, userMessage, endpointOption, isEdited, isContinued, isTemporary, isWebSearch } =
     submission;
   const { conversationId } = s.tConvoUpdateSchema.parse(conversation);
   const { endpoint, endpointType } = endpointOption as {
@@ -25,6 +25,7 @@ export default function createPayload(submission: t.TSubmission) {
     isContinued: !!(isEdited && isContinued),
     conversationId,
     isTemporary,
+    isWebSearch,
   };
 
   return { server, payload };

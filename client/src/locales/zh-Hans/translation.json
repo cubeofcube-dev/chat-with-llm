@@ -455,6 +455,8 @@
   "com_ui_2fa_setup": "设置双重身份验证",
   "com_ui_2fa_verified": "成功验证双重身份验证",
   "com_ui_accept": "我接受",
+  "com_ui_enable_search": "已启动联网搜索",
+  "com_ui_disable_search": "已关闭联网搜索",
   "com_ui_add": "添加",
   "com_ui_add_model_preset": "添加一个模型或预设以获得额外的回复",
   "com_ui_add_multi_conversation": "添加多个对话",

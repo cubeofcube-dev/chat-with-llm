@@ -72,6 +72,7 @@ export default function useChatFunctions({
   const setFilesToDelete = useSetFilesToDelete();
   const getSender = useGetSender();
   const isTemporary = useRecoilValue(store.isTemporary);
+  const isEnableWebSearch = useRecoilValue(store.isWebSearch);
 
   const queryClient = useQueryClient();
   const { getExpiry } = useUserKey(conversation?.endpoint ?? '');
@@ -297,6 +298,7 @@ export default function useChatFunctions({
       isRegenerate,
       initialResponse,
       isTemporary,
+      isWebSearch: isEnableWebSearch,
     };
 
     if (isRegenerate) {

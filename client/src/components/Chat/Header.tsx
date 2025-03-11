@@ -44,7 +44,7 @@ export default function Header() {
           {<HeaderOptions interfaceConfig={interfaceConfig} />}
           {interfaceConfig.presets === true && <PresetsMenu />}
           {hasAccessToBookmarks === true && <BookmarkMenu />}
-          {hasAccessToMultiConvo === true && <SearchWeb />}
+          {<SearchWeb />}
           {isSmallScreen && (
             <ExportAndShareMenu
               isSharedButtonEnabled={startupConfig?.sharedLinksEnabled ?? false}

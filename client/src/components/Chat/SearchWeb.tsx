@@ -1,38 +1,40 @@
 import { Globe } from 'lucide-react';
-import { useChatContext, useAddedChatContext } from '~/Providers';
 import { TooltipAnchor } from '~/components';
 import { useLocalize } from '~/hooks';
-import { useState } from "react";
+import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import store from '~/store';
 
 function SearchWeb() {
-  const { conversation } = useChatContext();
-  const { setConversation: setAddedConvo } = useAddedChatContext();
   const localize = useLocalize();
-  const [isSelected, setIsSelected ] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
+  const setIsWebSearch = useSetRecoilState(store.isWebSearch);
 
   const clickHandler = () => {
-    setIsSelected(!isSelected);
-    if(!isSelected) {return;}
+    setIsSelected((prev) => {
+      const newValue = !prev;
+      setIsWebSearch(newValue);
+      return newValue;
+    });
   };
 
-  if (!conversation) {
-    return null;
-  }
+  const iconColor = isSelected ? 'rgb(99, 102, 241)' : undefined;
+  const tooltipText = isSelected
+    ? localize('com_ui_enable_search')
+    : localize('com_ui_disable_search');
 
   return (
     <TooltipAnchor
       id="com_nav_browser-button"
-      aria-label={localize('com_nav_browser')}
-      description={localize('com_nav_browser')}
+      aria-label={tooltipText}
+      description={tooltipText}
       tabIndex={0}
       role="button"
       onClick={clickHandler}
-      data-testid="parameters-button"
-      className="inline-flex size-10 items-center justify-center rounded-lg border border-border-light bg-transparent text-text-primary transition-all ease-in-out hover:bg-surface-tertiary disabled:pointer-events-none disabled:opacity-50 radix-state-open:bg-surface-tertiary"
+      data-testid="search-web-button"
+      className={`inline-flex size-10 items-center justify-center rounded-lg border border-border-light bg-transparent text-text-primary transition-all ease-in-out ${isSelected ? 'bg-surface-tertiary' : ''} hover:bg-surface-tertiary radix-state-open:bg-surface-tertiary`}
     >
-      <Globe size={16} aria-label="Globe Icon" style={{
-        color: isSelected ? '#3dfeff' : 'currentColor',
-      }} />
+      <Globe size={16} aria-label="Globe Icon" style={{ color: iconColor }} />
     </TooltipAnchor>
   );
 }

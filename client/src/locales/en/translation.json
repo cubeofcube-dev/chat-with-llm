@@ -455,6 +455,8 @@
   "com_ui_2fa_setup": "Setup 2FA",
   "com_ui_2fa_verified": "Successfully verified Two-Factor Authentication",
   "com_ui_accept": "I accept",
+  "com_ui_enable_search": "Enabled search",
+  "com_ui_disable_search": "Disabled search",
   "com_ui_add": "Add",
   "com_ui_add_model_preset": "Add a model or preset for an additional response",
   "com_ui_add_multi_conversation": "Add multi-conversation",

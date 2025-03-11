@@ -1,47 +1,15 @@
 import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import TagManager from 'react-gtm-module';
-import { Constants } from 'librechat-data-provider';
 import { useGetStartupConfig } from '~/data-provider';
-import { useLocalize } from '~/hooks';
 
 export default function Footer({ className }: { className?: string }) {
   const { data: config } = useGetStartupConfig();
-  const localize = useLocalize();
+  const privacyPolicyRender = false;
 
-  const privacyPolicy = config?.interface?.privacyPolicy;
-  const termsOfService = config?.interface?.termsOfService;
+  const termsOfServiceRender = false;
 
-  const privacyPolicyRender = privacyPolicy?.externalUrl != null && (
-    <a
-      className="text-text-secondary underline"
-      href={privacyPolicy.externalUrl}
-      target={privacyPolicy.openNewTab === true ? '_blank' : undefined}
-      rel="noreferrer"
-    >
-      {localize('com_ui_privacy_policy')}
-    </a>
-  );
-
-  const termsOfServiceRender = termsOfService?.externalUrl != null && (
-    <a
-      className="text-text-secondary underline"
-      href={termsOfService.externalUrl}
-      target={termsOfService.openNewTab === true ? '_blank' : undefined}
-      rel="noreferrer"
-    >
-      {localize('com_ui_terms_of_service')}
-    </a>
-  );
-
-  const mainContentParts = (
-    typeof config?.customFooter === 'string'
-      ? config.customFooter
-      : '[LibreChat ' +
-        Constants.VERSION +
-        '](https://librechat.ai) - ' +
-        localize('com_ui_latest_footer')
-  ).split('|');
+  const mainContentParts = [];
 
   useEffect(() => {
     if (config?.analyticsGtmId != null && typeof window.google_tag_manager === 'undefined') {

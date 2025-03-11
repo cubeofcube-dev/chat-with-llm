@@ -15,8 +15,14 @@ const isSearching = atom({
   default: false,
 });
 
+const isWebSearch = atom({
+  key: 'isWebSearch',
+  default: false,
+});
+
 export default {
   isSearchEnabled,
   searchQuery,
   isSearching,
+  isWebSearch,
 };

@@ -45,6 +45,7 @@ export type TPayload = Partial<TMessage> &
     conversationId: string | null;
     messages?: TMessages;
     isTemporary: boolean;
+    isWebSearch: boolean;
   };
 
 export type TSubmission = {
@@ -55,6 +56,7 @@ export type TSubmission = {
   isEdited?: boolean;
   isContinued?: boolean;
   isTemporary: boolean;
+  isWebSearch: boolean;
   messages: TMessage[];
   isRegenerate?: boolean;
   conversationId?: string;
