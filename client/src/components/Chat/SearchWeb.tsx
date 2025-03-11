@@ -1,27 +1,23 @@
 import { Globe } from 'lucide-react';
 import { TooltipAnchor } from '~/components';
 import { useLocalize } from '~/hooks';
-import { useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useCallback, useMemo } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import store from '~/store';
 
 function SearchWeb() {
   const localize = useLocalize();
-  const [isSelected, setIsSelected] = useState(false);
+  const webSearch = useRecoilValue(store.isWebSearch);
   const setIsWebSearch = useSetRecoilState(store.isWebSearch);
 
-  const clickHandler = () => {
-    setIsSelected((prev) => {
-      const newValue = !prev;
-      setIsWebSearch(newValue);
-      return newValue;
-    });
-  };
+  const clickHandler = useCallback(() => {
+    setIsWebSearch((prev) => !prev);
+  }, [setIsWebSearch]);
 
-  const iconColor = isSelected ? 'rgb(99, 102, 241)' : undefined;
-  const tooltipText = isSelected
-    ? localize('com_ui_enable_search')
-    : localize('com_ui_disable_search');
+  const tooltipText = useMemo(
+    () => (webSearch ? localize('com_ui_enable_search') : localize('com_ui_disable_search')),
+    [webSearch, localize],
+  );
 
   return (
     <TooltipAnchor
@@ -32,9 +28,15 @@ function SearchWeb() {
       role="button"
       onClick={clickHandler}
       data-testid="search-web-button"
-      className={`inline-flex size-10 items-center justify-center rounded-lg border border-border-light bg-transparent text-text-primary transition-all ease-in-out ${isSelected ? 'bg-surface-tertiary' : ''} hover:bg-surface-tertiary radix-state-open:bg-surface-tertiary`}
+      className={`inline-flex size-10 items-center justify-center rounded-lg border border-border-light bg-transparent text-text-primary transition-all ease-in-out ${
+        webSearch ? 'bg-surface-tertiary' : ''
+      } hover:bg-surface-tertiary radix-state-open:bg-surface-tertiary`}
     >
-      <Globe size={16} aria-label="Globe Icon" style={{ color: iconColor }} />
+      <Globe
+        size={16}
+        aria-label="Globe Icon"
+        style={{ color: webSearch ? 'rgb(99, 102, 241)' : undefined }}
+      />
     </TooltipAnchor>
   );
 }
