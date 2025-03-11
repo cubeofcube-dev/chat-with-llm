@@ -127,6 +127,7 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
     name: endpoint,
   };
 
+  const endpointName = endpoint ? endpoint.charAt(0).toLowerCase() + endpoint.slice(1) : '';
   const endpointIcons: {
     [key: string]: EndpointIcon | undefined;
   } = {
@@ -185,8 +186,8 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
   };
 
   let { icon, bg, name } =
-    endpoint != null && endpoint && endpointIcons[endpoint]
-      ? endpointIcons[endpoint] ?? {}
+    endpoint != null && endpoint && endpointIcons[endpointName]
+      ? endpointIcons[endpointName] ?? {}
       : (endpointIcons.default as EndpointIcon);
 
   if (iconURL && endpointIcons[iconURL]) {

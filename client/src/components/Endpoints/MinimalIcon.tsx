@@ -24,6 +24,7 @@ const MinimalIcon: React.FC<IconProps> = (props) => {
     endpoint = props.endpoint;
   }
 
+  endpoint = endpoint ? endpoint.charAt(0).toLowerCase() + endpoint.slice(1) : '';
   const endpointIcons = {
     [EModelEndpoint.azureOpenAI]: {
       icon: <AzureMinimalIcon className={iconClassName} />,

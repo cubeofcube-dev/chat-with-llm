@@ -9,6 +9,7 @@ import { useMediaQuery, useHasAccess } from '~/hooks';
 import HeaderOptions from './Input/HeaderOptions';
 import BookmarkMenu from './Menus/BookmarkMenu';
 import AddMultiConvo from './AddMultiConvo';
+import SearchWeb from "~/components/Chat/SearchWeb";
 
 const defaultInterface = getConfigDefaults().interface;
 
@@ -43,7 +44,7 @@ export default function Header() {
           {<HeaderOptions interfaceConfig={interfaceConfig} />}
           {interfaceConfig.presets === true && <PresetsMenu />}
           {hasAccessToBookmarks === true && <BookmarkMenu />}
-          {hasAccessToMultiConvo === true && <AddMultiConvo />}
+          {hasAccessToMultiConvo === true && <SearchWeb />}
           {isSmallScreen && (
             <ExportAndShareMenu
               isSharedButtonEnabled={startupConfig?.sharedLinksEnabled ?? false}

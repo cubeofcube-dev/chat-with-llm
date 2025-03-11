@@ -26,11 +26,13 @@ const providerConfigMap = {
   [Providers.OLLAMA]: initCustom,
   [Providers.DEEPSEEK]: initCustom,
   [Providers.OPENROUTER]: initCustom,
-  [EModelEndpoint.openAI]: initOpenAI,
-  [EModelEndpoint.google]: initGoogle,
-  [EModelEndpoint.azureOpenAI]: initOpenAI,
-  [EModelEndpoint.anthropic]: initAnthropic,
-  [EModelEndpoint.bedrock]: getBedrockOptions,
+  [Providers.OPENAI]: initCustom,
+  [Providers.ANTHROPIC]: initCustom,
+  // [EModelEndpoint.openAI]: initOpenAI,
+  // [EModelEndpoint.google]: initGoogle,
+  // [EModelEndpoint.azureOpenAI]: initOpenAI,
+  // [EModelEndpoint.anthropic]: initAnthropic,
+  // [EModelEndpoint.bedrock]: getBedrockOptions,
 };
 
 /**

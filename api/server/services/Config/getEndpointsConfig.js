@@ -15,7 +15,7 @@ async function getEndpointsConfig(req) {
     return cachedEndpointsConfig;
   }
 
-  const defaultEndpointsConfig = await loadDefaultEndpointsConfig(req);
+  const defaultEndpointsConfig = {};
   const customConfigEndpoints = await loadConfigEndpoints(req);
 
   /** @type {TEndpointsConfig} */

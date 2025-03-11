@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { EModelEndpoint, KnownEndpoints } from 'librechat-data-provider';
-import { CustomMinimalIcon } from '~/components/svg';
+import { AnthropicIcon, CustomMinimalIcon, OpenAIMinimalIcon } from '~/components/svg';
 import { IconContext } from '~/common';
 import { cn } from '~/utils';
 
@@ -70,6 +70,13 @@ function UnknownIcon({
     return <CustomMinimalIcon className={className} />;
   }
 
+  const endpointName = endpoint ? endpoint.charAt(0).toLowerCase() + endpoint.slice(1) : '';
+  if(endpointName === EModelEndpoint.openAI) {
+    return <OpenAIMinimalIcon className={className} />;
+  }
+  if(endpointName === EModelEndpoint.anthropic) {
+    return <AnthropicIcon className={className} />;
+  }
   const currentEndpoint = endpoint.toLowerCase();
 
   if (iconURL) {
