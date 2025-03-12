@@ -21,6 +21,7 @@ const knownEndpointAssets = {
   [KnownEndpoints['together.ai']]: '/assets/together.png',
   [KnownEndpoints.unify]: '/assets/unify.webp',
   [KnownEndpoints.xai]: '/assets/xai.svg',
+  ['zhipuai']: '/assets/zhipuai.png',
 };
 
 const knownEndpointClasses = {

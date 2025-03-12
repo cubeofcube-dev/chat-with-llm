@@ -175,7 +175,7 @@ endpoints:
       apiKey: "${OPENAI_API_KEY}"
       baseURL: "${OPENAI_BASE_URL}"
       models:
-        default: ["deepseek-chat", "deepseek-reasoner",]
+        default: ["deepseek-chat", "deepseek-reasoner"]
         fetch: false
       titleConvo: true
       titleMethod: "completion"
@@ -186,12 +186,23 @@ endpoints:
       apiKey: "${OPENAI_API_KEY}"
       baseURL: "${OPENAI_BASE_URL}"
       models:
-        default: [ "claude-3-haiku-20240307", "claude-3-sonnet-20240229", "claude-3-5-sonnet-20240620", "claude-3-7-sonnet-20250219"]
+        default: ["claude-3-haiku-20240307", "claude-3-sonnet-20240229", "claude-3-5-sonnet-20240620", "claude-3-7-sonnet-20250219"]
         fetch: false
       titleConvo: true
       titleMethod: "completion"
       titleModel: "claude-3-7-sonnet-20250219"
       modelDisplayLabel: "Anthropic"
+
+    - name: "ZhiPuAI"
+      apiKey: "${OPENAI_API_KEY}"
+      baseURL: "${OPENAI_BASE_URL}"
+      models:
+        default: ["glm-4-flashx", "glm-4-air", "glm-4-plus"]
+        fetch: false
+      titleConvo: true
+      titleMethod: "completion"
+      titleModel: "gpt-4o"
+      modelDisplayLabel: "ZhiPuAI"
 #    # Groq Example
 #    - name: 'groq'
 #      apiKey: '${GROQ_API_KEY}'
