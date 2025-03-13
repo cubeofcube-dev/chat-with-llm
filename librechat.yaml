@@ -298,7 +298,9 @@ endpoints:
 #      forcePrompt: false
 #      modelDisplayLabel: 'Portkey'
 #      iconURL: https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/rjqy7ghvjoiu4cd1xjbf
-# fileConfig:
+fileConfig:
+  serverFileSizeLimit: 20  # Global server file size limit in MB
+  avatarSizeLimit: 2  # Limit for user avatar image size in MB
 #   endpoints:
 #     assistants:
 #       fileLimit: 5
