@@ -62,19 +62,10 @@ function AuthLayout({
     <div className="relative flex min-h-screen flex-col bg-white dark:bg-gray-900">
       <Banner />
       <BlinkAnimation active={isFetching}>
-        <div className="ml-8 mt-6 flex h-10 w-[25vw] flex-row md:w-1/4 lg:w-48">
-          <img src={theme === 'dark' ? '/assets/ks-dark.png' : '/assets/ks.png'} className="ml-2 h-full w-full object-contain" alt="fonund" />
-          <div className="mx-4 border-r-[1px] border-gray-300 dark:border-gray-600" />
-          <img
-            src="/assets/logo.svg"
+        <div className="mt-6 flex h-12 absolute left-10">
+          <img src={theme === 'dark' ? '/assets/cube-dark.png' : '/assets/cube.png'}
             className="h-full w-full object-contain"
-            alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? 'CubeChat' })}
-          />
-          <div className="mx-4 border-r-[1px] border-gray-300 dark:border-gray-600" />
-          <img
-            src={theme === 'dark' ? '/assets/cube-dark.png' : '/assets/cube.png'}
-            className="h-full w-full object-contain"
-            alt="fonund"
+            alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? '孵化中心 AI 对话' })}
           />
         </div>
       </BlinkAnimation>

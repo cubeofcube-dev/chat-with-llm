@@ -9,7 +9,7 @@ export default function Footer({ className }: { className?: string }) {
 
   const termsOfServiceRender = false;
 
-  const mainContentParts = [];
+  const mainContentParts = [(typeof config?.customFooter === 'string') ? config?.customFooter : 'Powered by 金山孵化中心'];
 
   useEffect(() => {
     if (config?.analyticsGtmId != null && typeof window.google_tag_manager === 'undefined') {
@@ -55,7 +55,7 @@ export default function Footer({ className }: { className?: string }) {
     <div
       className={
         className ??
-        'relative flex items-center justify-center gap-2 px-2 py-2 text-center text-xs text-text-primary md:px-[60px]'
+        'relative flex items-center justify-center gap-2 px-2 py-2 text-center text-xs text-gray-600 dark:text-gray-300 text-text-primary md:px-[60px]'
       }
       role="contentinfo"
     >

@@ -38,7 +38,7 @@ export default function StartupLayout({ isAuthenticated }: { isAuthenticated?: b
   }, [isAuthenticated, navigate, data]);
 
   useEffect(() => {
-    document.title = startupConfig?.appTitle || 'CubeChat';
+    document.title = startupConfig?.appTitle || '孵化中心 AI 对话';
   }, [startupConfig?.appTitle]);
 
   useEffect(() => {
