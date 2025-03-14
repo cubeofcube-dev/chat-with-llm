@@ -8,6 +8,7 @@ const {
   validateModel,
   validateEndpoint,
   buildEndpointOption,
+  webSearch,
 } = require('~/server/middleware');
 
 const router = express.Router();
@@ -20,6 +21,7 @@ router.post(
   validateModel,
   buildEndpointOption,
   setHeaders,
+  webSearch,
   async (req, res, next) => {
     await AskController(req, res, next, initializeClient, addTitle);
   },

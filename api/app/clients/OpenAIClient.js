@@ -510,6 +510,32 @@ class OpenAIClient extends BaseClient {
       }
     }
 
+    let webSearchResultsText = opts.webSearchOptions?.resultsText ?? null;
+    if (webSearchResultsText) {
+      const lastUserMessageIndex = payload.findLastIndex((message) => message.role === 'user');
+      if (lastUserMessageIndex !== -1) {
+        let newPromptPayload = '';
+
+        // keep promptPrefix if it exists
+        if (promptPrefix && this.isOmni === true) {
+          newPromptPayload = `# Instructions\n${promptPrefix}\n`;
+        }
+
+        // web search results
+        newPromptPayload += `# Web Search Results\n${webSearchResultsText}\n`;
+
+        // require
+        newPromptPayload += `# Require\n- Answer using questioning language
+- Properly cite search content and message links
+- Reply in markdown format\n`;
+
+        // user input
+        newPromptPayload += `# User Input\n\`\`\`${payload[lastUserMessageIndex].content}\`\`\``;
+
+        payload[lastUserMessageIndex].content = newPromptPayload;
+      }
+    }
+
     if (tokenCountMap) {
       tokenCountMap.instructions = instructions?.tokenCount;
       result.tokenCountMap = tokenCountMap;

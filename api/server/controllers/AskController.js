@@ -99,6 +99,7 @@ const AskController = async (req, res, next, initializeClient, addTitle) => {
         res,
         // parentMessageId: overrideParentMessageId || userMessageId,
       },
+      webSearchOptions: req.body.webSearchOptions,
     };
 
     /** @type {TMessage} */
