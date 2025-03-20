@@ -44,8 +44,8 @@ export default defineConfig({
       },
       includeAssets: ['**/*'],
       manifest: {
-        name: 'LibreChat',
-        short_name: 'LibreChat',
+        name: '孵化中心 AI 对话',
+        short_name: '孵化中心 AI 对话',
         start_url: '/',
         display: 'standalone',
         background_color: '#000000',
